@@ -17,6 +17,11 @@ const StoreReducer = (globalState, action) => {
         ...globalState,
         singleStore: action.payload,
       };
+    case "UPDATE_STORE":
+      return {
+        ...globalState,
+        singleStore: action.payload,
+      };
 
     default:
       return globalState;

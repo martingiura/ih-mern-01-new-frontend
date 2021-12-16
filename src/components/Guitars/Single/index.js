@@ -1,199 +1,179 @@
-// ./client/src/components/Guitars/single/index.js
-import React, { useEffect, useContext } from "react";
-import GuitarContext from "./../../../context/Guitar/GuitarContext";
-
+import React, { useContext, useEffect } from "react";
+import GuitarContext from "../../../context/Guitar/GuitarContext";
 import { useParams } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 export default function Single() {
   const ctx = useContext(GuitarContext);
-  const { singleGuitar, getGuitar } = ctx;
-
+  const { getGuitar, singleGuitar } = ctx;
   const params = useParams();
   const id = params.id;
-
   useEffect(() => {
     getGuitar(id);
   }, []);
-
   return (
-    <div>
-      Página individual de guitarra
-      {/* <button onClick={() => { getGuitar(id) }}>
-            Obtener guitarra individual
-        </button> */}
-      <section className="text-gray-700 body-font overflow-hidden bg-white">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="lg:w-4/5 mx-auto flex flex-wrap">
-            <img
-              alt="ecommerce"
-              className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
-              src={singleGuitar.imagen}
-            />
-            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                {singleGuitar.nombre}
-              </h2>
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                {singleGuitar.nombre}
-              </h1>
-              <div className="flex mb-4">
-                <span className="flex items-center">
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <span className="text-gray-600 ml-3">4 Reviews</span>
-                </span>
-                <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
-                  <a className="text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                    </svg>
-                  </a>
-                  <a className="ml-2 text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                    </svg>
-                  </a>
-                  <a className="ml-2 text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                    </svg>
-                  </a>
-                </span>
-              </div>
-              <p className="leading-relaxed">{singleGuitar.descripcion}</p>
-              <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-                <div className="flex">
-                  <span className="mr-3">Color</span>
-                  <button className="border-2 border-gray-300 rounded-full bg-gray-900 w-6 h-6 focus:outline-none"></button>
-                  <button className="border-2 border-gray-300 ml-1 bg-blue-900 rounded-full w-6 h-6 focus:outline-none"></button>
-                  <button className="border-2 border-gray-300 ml-1 bg-sky-900 rounded-full w-6 h-6 focus:outline-none"></button>
-                </div>
-                <div className="flex ml-6 items-center">
-                  <span className="mr-3">Size</span>
-                  <div className="relative">
-                    <select className="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10">
-                      <option>SM</option>
-                      <option>M</option>
-                      <option>L</option>
-                      <option>XL</option>
-                    </select>
-                    <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                      <svg
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        className="w-4 h-4"
-                        viewBox="0 0 24 24"
+    <>
+      <div>
+        <div class="mt-4 flex md:mt-0">
+          <Link to={`/guitarras/${id}/editar`}>
+            <button
+              type="button"
+              class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Editar guitarra
+            </button>
+          </Link>
+        </div>
+
+        <div className="bg-white">
+          <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
+            <div className="lg:max-w-lg lg:self-end">
+              <nav aria-label="Breadcrumb">
+                <ol role="list" className="flex items-center space-x-2">
+                  <li>
+                    <div className="flex items-center text-sm">
+                      <Link
+                        to="/guitarras"
+                        className="font-medium text-gray-500 hover:text-gray-900"
                       >
-                        <path d="M6 9l6 6 6-6"></path>
+                        Guitarras
+                      </Link>
+                      <svg
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        className="ml-2 flex-shrink-0 h-5 w-5 text-gray-300"
+                      >
+                        <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
                       </svg>
-                    </span>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="flex items-center text-sm">
+                      <Link
+                        to="/guitarras"
+                        className="font-medium text-gray-500 hover:text-gray-900"
+                      >
+                        Eléctricas
+                      </Link>
+                    </div>
+                  </li>
+                </ol>
+              </nav>
+              <div className="mt-4">
+                <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                  {singleGuitar.nombre}
+                </h1>
+              </div>
+              <section aria-labelledby="information-heading" className="mt-4">
+                <h2 id="information-heading" className="sr-only">
+                  Product information
+                </h2>
+                <div className="flex items-center">
+                  <p className="text-lg text-gray-900 sm:text-xl">
+                    MXN ${singleGuitar.precio}
+                  </p>
+                  <div className="ml-4 pl-4 border-l border-gray-300">
+                    <h2 className="sr-only">Reviews</h2>
+                    <div className="flex items-center">
+                      <div>
+                        <div className="flex items-center">
+                          <svg
+                            className="text-yellow-400 h-5 w-5 flex-shrink-0"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                          <svg
+                            className="text-yellow-400 h-5 w-5 flex-shrink-0"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                          <svg
+                            className="text-yellow-400 h-5 w-5 flex-shrink-0"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                          <svg
+                            className="text-yellow-400 h-5 w-5 flex-shrink-0"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                          <svg
+                            className="text-gray-300 h-5 w-5 flex-shrink-0"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        </div>
+                        <p className="sr-only">4 out of 5 stars</p>
+                      </div>
+                      <p className="ml-2 text-sm text-gray-500">1624 reviews</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="flex">
-                <span className="title-font font-medium text-2xl text-gray-900">
-                  ${singleGuitar.precio}.00 MXN
-                </span>
-                <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                  Buy
-                </button>
-                <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                <div className="mt-4 space-y-6">
+                  <p className="text-base text-gray-500">
+                    {singleGuitar.description}
+                  </p>
+                </div>
+                <div className="mt-6 flex items-center">
                   <svg
+                    className="flex-shrink-0 w-5 h-5 text-green-500"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
                     fill="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
-                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
                   </svg>
-                </button>
+                  <p className="ml-2 text-sm text-gray-500">
+                    In stock and ready to ship
+                  </p>
+                </div>
+              </section>
+            </div>
+            <div className="mt-10 lg:mt-0 lg:col-start-2 lg:row-span-2 lg:self-center">
+              <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden">
+                <img
+                  src={singleGuitar.imagen}
+                  alt="Imagen de guitarra"
+                  className="w-full h-full object-center object-cover"
+                />
               </div>
+            </div>
+            <div className="mt-10 lg:max-w-lg lg:col-start-1 lg:row-start-2 lg:self-start">
+              <section aria-labelledby="options-heading">
+                <h2 id="options-heading" className="sr-only">
+                  Product options
+                </h2>
+              </section>
             </div>
           </div>
         </div>
-      </section>
-      {/* <h1> {singleGuitar.nombre} </h1> */}
-      {/* <p> {singleGuitar.descripcion} </p>
-        <p> {singleGuitar.precio} </p> */}
-    </div>
+      </div>
+    </>
   );
 }

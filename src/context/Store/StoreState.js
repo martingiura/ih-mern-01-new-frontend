@@ -17,7 +17,7 @@ const StoreState = (props) => {
     singleStore: {
       _id: "",
       nombre: "",
-      direccion: "",
+      domicilio: "",
       telefono: "",
       descripcion: "",
       imagen: "",
@@ -63,6 +63,17 @@ const StoreState = (props) => {
 
     console.log(res);
   };
+
+  const updateStore = async (form, idStore) => {
+    const res = await axiosClient.put(`stores/edit/${idStore}`, form);
+
+    const updatedStore = res.data.data;
+
+    dispatch({
+      type: "UPDATE_STORE",
+      payload: updatedStore,
+    });
+  };
   // 4. RETORNO
   return (
     <StoreContext.Provider
@@ -74,6 +85,7 @@ const StoreState = (props) => {
         getStores,
         getStore,
         createStore,
+        updateStore,
       }}
     >
       {props.children}

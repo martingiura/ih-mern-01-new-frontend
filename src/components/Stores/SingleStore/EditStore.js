@@ -1,26 +1,48 @@
-// ./new-client/src/components/Guitars/Create.js
+//./src/components/Guitars/Single/Edit.js
 
-import React, { useState, useContext } from "react";
-import StoreContext from "../../context/Store/StoreContext";
+import React, { useState, useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import StoreContext from "../../../context/Store/StoreContext";
 
-export default function Create() {
+export default function Edit() {
   // 1. ESTADO GLOBAL
+  const params = useParams();
+  const idStore = params.id;
+
   const ctx = useContext(StoreContext);
-  const { createStore } = ctx;
+
+  const { singleStore, getStore, updateStore } = ctx;
 
   // 2. ESTADO LOCAL
-  const [newStore, setNewStore] = useState({
+  const [storeData, setStoreData] = useState({
     nombre: "",
-    domicilio: "",
+    domiciliio: "",
     telefono: "",
   });
 
   // 3. FUNCIONES
+
+  useEffect(() => {
+    // 1. DESCARGAR LOS DATOS DE LA GUITARRA DE LA PÁGINA
+    getStore(idStore);
+  }, []);
+
+  // 2. CAMBIAR EL ESTADO CON ESTOS NUEVOS CAMBIOS DEL GLOBAL AL LOCAL
+  useEffect(() => {
+    const { nombre, domicilio, telefono } = ctx.singleStore;
+
+    setStoreData({
+      nombre,
+      domicilio,
+      telefono,
+    });
+  }, [singleStore]);
+
   const handleChange = (e) => {
     e.preventDefault();
 
-    setNewStore({
-      ...newStore,
+    setStoreData({
+      ...storeData,
       [e.target.name]: e.target.value,
     });
   };
@@ -28,7 +50,7 @@ export default function Create() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    createStore(newStore);
+    updateStore(storeData, idStore);
   };
 
   return (
@@ -42,7 +64,7 @@ export default function Create() {
           <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
             <div>
               <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Nueva Tienda
+                Editar Store
               </h3>
               <p class="mt-1 text-sm text-gray-500"></p>
             </div>
@@ -61,6 +83,7 @@ export default function Create() {
                   }}
                   type="text"
                   name="nombre"
+                  value={storeData.nombre}
                   class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
@@ -78,6 +101,7 @@ export default function Create() {
                   }}
                   type="text"
                   name="domicilio"
+                  value={storeData.domicilio}
                   class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
@@ -95,6 +119,7 @@ export default function Create() {
                   onChange={(event) => {
                     handleChange(event);
                   }}
+                  value={storeData.telefono}
                   class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
